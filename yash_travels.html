@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yash Travels</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="./yash_style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body class="bg-gray-50 font-poppins">
+  <!-- banner area  -->
+  <section class="banner">
+    <!-- this was my header area  -->
+    <header class="header flex justify-between items-center p-4 bg-white shadow-md sticky top-0 z-50">
+      <div class="logo">
+        <!-- <p class="logo-text">Yash</p>
+        <p class="logo-text">Travels</p> -->
+        <img src="logo.png" alt=" logo" class="logo2 h-12" />
+      </div>
+      <nav class="nav">
+        <div>
+          <ul class="nav-links flex space-x-6 text-gray-700 font-semibold">
+            <li class="nav-link">
+              <a href="yash_travels.html" class="hover:text-blue-600">Home</a>
+            </li>
+
+            <li class="nav-link">
+              <a href="rooms.html" class="hover:text-blue-600">Rooms</a>
+            </li>
+
+            <li class="nav-link">
+              <a href="premium.html" class="hover:text-blue-600">Premium</a>
+            </li>
+
+            <li class="nav-link">
+              <button
+                id="loginBtn"
+                class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md"
+              >
+                Login / Sign Up
+              </button>
+            </li>
+
+            <li class="nav-link">
+              <a href="about.html" class="hover:text-blue-600">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- banner  details  -->
+
+    <div class="banner-details" data-aos="fade-up" data-aos-duration="1000">
+      <div class="badge">Best of travel places for you from us.</div>
+      <h1 class="banner-heading">Explore the beauty of India</h1>
+      <button class="btn">Explore now</button>
+
+      <div class="booking" data-aos="fade-up" data-aos-duration="1000">
+        <div class="inp">
+          <label for="checkin">Checkin date</label>
+          <input type="date" id="checkin" />
+        </div>
+
+        <div class="inp">
+          <label for="checkout">Checkout date</label>
+          <input type="date" id="checkout" />
+        </div>
+
+        <div class="inp">
+          <label for="adults">No. of Adults</label>
+          <input type="number" placeholder="No. of Adults" id="adults" />
+        </div>
+
+        <div class="inp">
+          <label for="children">No. of Children</label>
+          <input type="number" placeholder="No. of Children" id="children" />
+        </div>
+        <div class="inp">
+          <button class="btn2" id="bookNowBtn">Book Now</button>
+        </div>
+      </div>
+    </div>
+          </section>
+          <!-- About us section -->
+          <section class="About">
+                    <i class="fa-regular fa-compass icon"></i>
+
+                    <p>
+                              <span class="highlight">Welcome to Yash Travels!</span>
+                              We're dedicated to creating unforgettable travel experiences tailored just
+                              for you. Whether you're an adventurer at heart or looking to unwind in serene
+                              destinations, we ensure every trip is personalized and seamless. Join us and explore the
+                              world in the most
+                              memorable
+                              way!
+                    </p>
+
+          </section>
+          <section class="bookings">
+                    <div class="midicons" id="topnav">
+                              <div class="rwmenu">
+                                        <ul>
+                                                  <li class="nav-link"><a href="Flight.html">Flight</a>
+                                                  </li>
+
+                                                  <li class="nav-link"><a href="Train.html">Train</a></li>
+
+                                                  <li class="nav-link"><a href="Hotels.html">Hotels</a>
+                                                  </li>
+
+                                                  <li class="nav-link"> <a href="bus.html">Bus</a>
+                                                  </li>
+
+                                                  <li class="nav-link"><a href="about.html">About
+                                                            </a></li>
+                                        </ul>
+                              </div>
+                    </div>
+
+          </section>
+          <!-- rooms sections  -->
+          <section class="rooms">
+                    <h1 class="section-title">
+                              Best of Indian rooms
+                    </h1>
+                    <p>
+                              Experience the perfect blend of traditional elegance and modern comfort . Our rooms are
+                              thoughtfully designed to reflect the rich cultural heritage of India, with contemporary
+                              amenities to ensure a comfortable stay. Each room is a haven of peace and tranquility.
+                    </p>
+                    <div class="rooms-area" data-aos="fade-up">
+                              <div class="room" data-aos="fade-up" data-aos-duration="1000">
+                                        <div class="room-img">
+                                                  <img src="room1.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details">
+                                                  <h2>Deluxe Room</h2>
+                                                  <h3>₹ 1499/ Night </h3>
+                                                  <p>Experience the blend of luxury and Indian charm with a king-size
+                                                            bed, handcrafted decor, modern amenities, a rain shower, and
+                                                            a private balcony. Book now!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+                              <div class="room">
+                                        <div class="room-img" data-aos="fade-up" data-aos-duration="1000">
+                                                  <img src="room2.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details">
+                                                  <h2>Shared Hostel Room</h2>
+                                                  <h3>₹ 499/ Night </h3>
+                                                  <p>
+                                                            Stay in our comfortable shared hostel rooms featuring bunk
+                                                            beds, secure lockers, free Wi-Fi, and communal bathrooms.
+                                                            Ideal for budget travelers!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+                              <div class="room">
+                                        <div class="room-img" data-aos="fade-up" data-aos-duration="1000">
+                                                  <img src="room3.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details">
+                                                  <h2>Lake side villa hotel</h2>
+                                                  <h3>₹ 8999/ Night </h3>
+                                                  <p>Enjoy a serene escape with our Lakeside Villa Hotel. Luxurious
+                                                            rooms, stunning lake views, modern amenities, and tranquil
+                                                            surroundings. Book now!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+                              <div class="room">
+                                        <div class="room-img" data-aos="fade-up" data-aos-duration="1000">
+                                                  <img src="room4.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details">
+                                                  <h2>Sea Facing Villa</h2>
+                                                  <h3>₹ 49999/ Night </h3>
+                                                  <p>Embrace coastal luxury with our Sea-Facing Villa. Stunning ocean
+                                                            views, spacious interiors, modern amenities, and private
+                                                            beach access. Reserve your slice of paradise now!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+                              <div class="room">
+                                        <div class="room-img" data-aos="fade-up" data-aos-duration="1000">
+                                                  <img src="room5.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details">
+                                                  <h2>Couple Suite</h2>
+                                                  <h3>₹ 4999/ Night </h3>
+                                                  <p>Experience romance and luxury in our Couple Suite. Elegant decor,
+                                                            king-size bed, private balcony, and modern amenities make
+                                                            for an unforgettable stay. Book your getaway now!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+                              <div class="room">
+                                        <div class="room-img" data-aos="fade-up" data-aos-duration="1000">
+                                                  <img src="room6.jpg" alt=" room" class="room-image">
+                                        </div>
+                                        <div class="room-details accessible">
+                                                  <h2>Accessible Room</h2>
+                                                  <h3>₹ 1099/ Night </h3>
+                                                  <p>Our Accessible Room ensures comfort and ease for guests with
+                                                            disabilities. Features include step-free entry, wider
+                                                            doorways, a roll-in shower, grab bars, and accessible
+                                                            fixtures. Stay comfortably and safely!
+                                                  </p>
+                                                  <button class="btn">
+                                                            know more
+                                                  </button>
+                                        </div>
+                              </div>
+
+                    </div>
+
+          </section>
+          <!-- Subscribe section  -->
+          <section class="subscribe">
+                    <div class="sub-text" data-aos="flip-left" data-aos-duration="1000">
+                              <div class="logo2">
+                                        <p class="logo-text">Yash</p>
+                                        <p class="logo-text">Travels</p>
+                                        <p class="sub-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                  Dolorem, quaerat.
+                                        </p>
+                              </div>
+                    </div>
+                    <div class="sub-area" data-aos="flip-right" data-aos-duration="1000">
+                              <h3>Subscribe To Newsletter</h3>
+                              <div class="sub-form" data-aos="flip-right">
+                                        <input type="text" class="sub-inp" placeholder="Enter Email">
+                                        <button class="btn">Subscribe</button>
+
+                              </div>
+                    </div>
+
+          </section>
+          <!-- banner for food  -->
+          <section class="food">
+                    <div class="food-detail" data-aos="fade-right" data-aos-duration="1000">
+                              <h1 class="section-header">
+                                        Best Foods from all of Indian Cuisines
+                              </h1>
+                              <p>Indian cuisine is a symphony of flavors, largely owing to its diverse spices. Key
+                                        spices include turmeric, cumin, coriander, and garam masala—a blend of several
+                                        spices. These create a balance of heat, aroma, and depth that are signature to
+                                        Indian dishes. It’s a culinary world full of vibrant and distinct tastes.
+                                        Intrigued?</p>
+                              <button class="btn">
+                                        Explore More Flavours and Distinct Tastes !
+                              </button>
+
+                    </div>
+          </section>
+          <!-- premium room section  -->
+          <!-- <section class="premium-room">
+                    <h1 class="section-title">
+                              Some Premium Rooms
+                    </h1>
+                    <p> Each luxury Indinan hotel room offers a unique blend of luxury and history.</p>
+                    <div class="prooms-area">
+                              <div class="proom-img">
+                                        <img src="vertical.jpg" class='proom-image' alt="vertical image">
+                              </div>
+                              <div class="proom-boxes">
+                                        <div class="proom-box1" data-aos="zoom-out-down" data-aos-duration="1000">
+                                                  <h3 class="section-title"> Lakeside luxury with Mughal-inspired design
+                                                            and stunning views.</h3>
+                                                  <h4>₹30,000 per night</h4>
+                                                  <p>Oberoi Udaivilas, Udaipur is the epitome of lakeside luxury with
+                                                            Mughal-inspired design, offering stunning views of the City
+                                                            Palace and Jag Mandir. It features exquisite dining,
+                                                            traditional performances, and unmatched elegance. Pure
+                                                            opulence.</p>
+                                                  <button class='btn'>
+                                                            Explore More Options
+                                                  </button>
+                                        </div>
+                                        <div class="proom-box2" data-aos="zoom-out-down" data-aos-duration="1000">
+                                                  <h3 class="section-title"> Tranquil heritage home, perfect for a
+                                                            peaceful getaway.</h3>
+                                                  <h4>₹8,000 per night</h4>
+                                                  <p>Daspan House, Jodhpur is a beautifully restored heritage home from
+                                                            1921, offering a tranquil and peaceful atmosphere. It
+                                                            provides comfortable accommodations, perfect for those
+                                                            seeking a serene and restful getaway. A delightful blend of
+                                                            history and comfort.</p>
+                                                  <button class='btn'>
+                                                            Explore More Options
+                                                  </button>
+                                        </div>
+                                        <div class="proom-box3" data-aos="zoom-out-down" data-aos-duration="1000">
+                                                  <h3 class="section-title">Historic charm meets modern amenities, with
+                                                            great dining options.</h3>
+                                                  <h4>₹10,000 per night</h4>
+                                                  <p>Taj Mahal Lucknow, Gomti Nagar blends historic charm with modern
+                                                            comfort, featuring stylish rooms, ergonomic work desks, and
+                                                            luxurious bathrooms. The hotel offers international cuisine
+                                                            at Latitude and North Indian specialties at Oudhyana. It's a
+                                                            harmonious mix of elegance and convenience.</p>
+                                                  <button class='btn'>
+                                                            Explore More Options
+                                                  </button>
+                                        </div>
+
+                              </div>
+                    </div>
+
+          </section> -->
+          <!-- gallery section  -->
+          <section class="gallery">
+
+                    <img class='gall-img' src="gallery1.jpg" alt="gallery">
+                    <img class='gall-img' src="gallery2.jpg" alt="gallery">
+                    <img class='gall-img' src="gallery3.jpg" alt="gallery">
+                    <img class='gall-img' src="gallery4.jpg" alt="gallery">
+                    <img class='gall-img' src="gallery5.jpg" alt="gallery">
+                    <img class='gall-img' src="gallery6.jpg" alt="gallery">
+
+          </section>
+          <sec class="foot">
+                    <footer class="footer">
+                              <p class="footer1">contact us :- +91 2498860062 <br>
+                                        email id:- travel00@gmail.com</p>
+                              <p></p>
+                    </footer>
+                    <footer class="copyright">
+                              <p>© 2024 TravelSmart. All rights reserved.</p>
+                    </footer>
+          </sec>
+          </body>
+          <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+          <script>
+                    AOS.init();
+          </script>
+          <script src="script.js"></script>
+
+          <script>
+            // Booking form submit handler
+            const bookNowBtn = document.getElementById('bookNowBtn');
+            bookNowBtn.addEventListener('click', async (e) => {
+              e.preventDefault();
+              const bookingData = {
+                checkin: document.getElementById('checkin').value,
+                checkout: document.getElementById('checkout').value,
+                adults: document.getElementById('adults').value,
+                children: document.getElementById('children').value,
+              };
+              try {
+                const res = await fetch('http://localhost:3000/api/bookings', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(bookingData),
+                });
+                const data = await res.json();
+                if (res.ok) {
+                  alert(data.message);
+                } else {
+                  alert('Booking failed. Please try again.');
+                }
+              } catch (err) {
+                alert('Error connecting to server.');
+              }
+            });
+
+            // Login modal handlers
+            const loginBtn = document.getElementById('loginBtn');
+            const loginModal = document.createElement('div');
+            loginModal.innerHTML = `
+              <div
+                id="loginModal"
+                class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+                style="display:none;"
+              >
+                <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+                  <h2 class="text-2xl font-bold mb-4 text-center">Login / Sign Up</h2>
+                  <form id="authForm" class="space-y-4">
+                    <input
+                      type="text"
+                      id="username"
+                      placeholder="Username"
+                      required
+                      class="w-full border border-gray-300 rounded-md p-2"
+                    />
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      required
+                      class="w-full border border-gray-300 rounded-md p-2"
+                    />
+                    <div class="flex justify-between items-center">
+                      <button
+                        type="submit"
+                        id="loginSubmit"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                      >
+                        Login
+                      </button>
+                      <button
+                        type="button"
+                        id="signupSubmit"
+                        class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+                      >
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                  <button
+                    id="closeModal"
+                    class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400 transition"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            `;
+            document.body.appendChild(loginModal);
+
+            const modal = document.getElementById('loginModal');
+            const closeModal = document.getElementById('closeModal');
+            const authForm = document.getElementById('authForm');
+            const loginSubmit = document.getElementById('loginSubmit');
+            const signupSubmit = document.getElementById('signupSubmit');
+
+            loginBtn.addEventListener('click', () => {
+              modal.style.display = 'flex';
+            });
+
+            closeModal.addEventListener('click', () => {
+              modal.style.display = 'none';
+            });
+
+            // Login handler
+            loginSubmit.addEventListener('click', async (e) => {
+              e.preventDefault();
+              const username = document.getElementById('username').value.trim();
+              const password = document.getElementById('password').value.trim();
+              if (!username || !password) {
+                alert('Please enter username and password');
+                return;
+              }
+              try {
+                const res = await fetch('http://localhost:3000/api/auth/login', {
+                  method: 'POST',
+                  credentials: 'include',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ username, password }),
+                });
+                const data = await res.json();
+                if (res.ok) {
+                  alert('Login successful');
+                  modal.style.display = 'none';
+                } else {
+                  alert(data.message || 'Login failed');
+                }
+              } catch (err) {
+                alert('Error connecting to server');
+              }
+            });
+
+            // Signup handler
+            signupSubmit.addEventListener('click', async (e) => {
+              e.preventDefault();
+              const username = document.getElementById('username').value.trim();
+              const password = document.getElementById('password').value.trim();
+              if (!username || !password) {
+                alert('Please enter username and password');
+                return;
+              }
+              try {
+                const res = await fetch('http://localhost:3000/api/auth/signup', {
+                  method: 'POST',
+                  credentials: 'include',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ username, password }),
+                });
+                const data = await res.json();
+                if (res.ok) {
+                  alert('Signup successful');
+                  modal.style.display = 'none';
+                } else {
+                  alert(data.message || 'Signup failed');
+                }
+              } catch (err) {
+                alert('Error connecting to server');
+              }
+            });
+          </script>
+
+</html>
