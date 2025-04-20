@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Your Stay - Yash Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-50 font-poppins">
+  <header class="flex justify-between items-center p-4 bg-white shadow-md sticky top-0 z-50">
+    <div class="logo">
+      <img src="images/logo.png" alt="logo" class="h-12" />
+    </div>
+    <nav>
+      <ul class="flex space-x-6 text-gray-700 font-semibold">
+        <li><a href="yash_travels.html" class="hover:text-blue-600">Home</a></li>
+        <li><a href="rooms.html" class="hover:text-blue-600">Rooms</a></li>
+        <li><a href="premium.html" class="hover:text-blue-600">Premium Rooms</a></li>
+        <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
+        <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+        <li>
+          <button
+            id="loginBtn"
+            class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md"
+          >
+            Login / Sign Up
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Book Your Trip</h1>
+    <form id="bookingForm" class="space-y-4 bg-white p-6 rounded-md shadow-md">
+      <div>
+        <label for="checkin" class="block font-semibold mb-1">Check-in:</label>
+        <input
+          type="date"
+          id="checkin"
+          name="checkin"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+      </div>
+      <div>
+        <label for="checkout" class="block font-semibold mb-1">Check-out:</label>
+        <input
+          type="date"
+          id="checkout"
+          name="checkout"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+      </div>
+      <div>
+        <label for="adults" class="block font-semibold mb-1">Adults:</label>
+        <input
+          type="number"
+          id="adults"
+          name="adults"
+          min="1"
+          max="10"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+      </div>
+      <div>
+        <label for="children" class="block font-semibold mb-1">Children:</label>
+        <input
+          type="number"
+          id="children"
+          name="children"
+          min="0"
+          max="10"
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+      </div>
+      <div>
+        <label for="roomType" class="block font-semibold mb-1">Room Type:</label>
+        <select
+          id="roomType"
+          name="roomType"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        >
+          <option value="">Select a room</option>
+          <option value="deluxe">Deluxe Room</option>
+          <option value="shared">Shared Hostel Room</option>
+          <option value="villa">Lakeside Villa</option>
+          <option value="sea">Sea Facing Villa</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Book Now
+      </button>
+    </form>
+    <p id="bookingResponse" class="mt-4 text-center text-green-600 font-semibold"></p>
+  </main>
+
+  <!-- Login Modal -->
+  <div
+    id="loginModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+  >
+    <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-center">Login / Sign Up</h2>
+      <form id="authForm" class="space-y-4">
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+          class="w-full border border-gray-300 rounded-md p-2"
+        />
+        <div class="flex justify-between items-center">
+          <button
+            type="submit"
+            id="loginSubmit"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            id="signupSubmit"
+            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+      <button
+        id="closeModal"
+        class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400 transition"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Show login modal
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.getElementById('closeModal');
+    const authForm = document.getElementById('authForm');
+    const loginSubmit = document.getElementById('loginSubmit');
+    const signupSubmit = document.getElementById('signupSubmit');
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingResponse = document.getElementById('bookingResponse');
+
+    loginBtn.addEventListener('click', () => {
+      loginModal.classList.remove('hidden');
+    });
+
+    closeModal.addEventListener('click', () => {
+      loginModal.classList.add('hidden');
+    });
+
+    // Login handler
+    loginSubmit.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (!username || !password) {
+        alert('Please enter username and password');
+        return;
+      }
+      try {
+        const res = await fetch('http://localhost:3000/api/auth/login', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert('Login successful');
+          loginModal.classList.add('hidden');
+        } else {
+          alert(data.message || 'Login failed');
+        }
+      } catch (err) {
+        alert('Error connecting to server');
+      }
+    });
+
+    // Signup handler
+    signupSubmit.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (!username || !password) {
+        alert('Please enter username and password');
+        return;
+      }
+      try {
+        const res = await fetch('http://localhost:3000/api/auth/signup', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert('Signup successful');
+          loginModal.classList.add('hidden');
+        } else {
+          alert(data.message || 'Signup failed');
+        }
+      } catch (err) {
+        alert('Error connecting to server');
+      }
+    });
+
+    // Booking form submit handler
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const bookingData = {
+        checkin: document.getElementById('checkin').value,
+        checkout: document.getElementById('checkout').value,
+        adults: document.getElementById('adults').value,
+        children: document.getElementById('children').value,
+        roomType: document.getElementById('roomType').value,
+      };
+      try {
+        const res = await fetch('http://localhost:3000/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bookingData),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          bookingResponse.textContent = data.message;
+          bookingForm.reset();
+        } else {
+          bookingResponse.textContent = 'Booking failed. Please try again.';
+        }
+      } catch (err) {
+        bookingResponse.textContent = 'Error connecting to server.';
+      }
+    });
+  </script>
+</body>
+</html>
