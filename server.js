@@ -2,14 +2,43 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
+const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
+const bcrypt = require('bcrypt');
 
 const app = express();
 const PORT = 3000;
 
-// In-memory user store (for demo purposes)
-const users = [];
-const bookings = [];
-const contacts = [];
+// Initialize SQLite database
+const db = new sqlite3.Database('./yashtravels.db', (err) => {
+  if (err) {
+    console.error('Error opening database', err.message);
+  } else {
+    console.log('Connected to SQLite database');
+  }
+});
+
+// Create tables if not exist
+db.serialize(() => {
+  db.run(`CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password TEXT
+  )`);
+  db.run(`CREATE TABLE IF NOT EXISTS bookings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    checkin TEXT,
+    checkout TEXT,
+    adults INTEGER,
+    children INTEGER
+  )`);
+  db.run(`CREATE TABLE IF NOT EXISTS contacts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT,
+    message TEXT
+  )`);
+});
 
 app.use(cors({
   origin: 'http://localhost:8000',
@@ -23,30 +52,55 @@ app.use(session({
   cookie: { secure: false } // For development only, set true with HTTPS
 }));
 
+// Serve static frontend files
+app.use(express.static(path.join(__dirname)));
+
 // Signup endpoint
 app.post('/api/auth/signup', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password required' });
   }
-  const existingUser = users.find(u => u.username === username);
-  if (existingUser) {
-    return res.status(409).json({ message: 'User already exists' });
-  }
-  users.push({ username, password });
-  req.session.user = { username };
-  res.json({ message: 'Signup successful', user: { username } });
+  db.get('SELECT * FROM users WHERE username = ?', [username], (err, row) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    if (row) {
+      return res.status(409).json({ message: 'User already exists' });
+    }
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) {
+        return res.status(500).json({ message: 'Error hashing password' });
+      }
+      db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hash], function(err) {
+        if (err) {
+          return res.status(500).json({ message: 'Database error' });
+        }
+        req.session.user = { username };
+        res.json({ message: 'Signup successful', user: { username } });
+      });
+    });
+  });
 });
 
 // Login endpoint
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(u => u.username === username && u.password === password);
-  if (!user) {
-    return res.status(401).json({ message: 'Invalid credentials' });
-  }
-  req.session.user = { username };
-  res.json({ message: 'Login successful', user: { username } });
+  db.get('SELECT * FROM users WHERE username = ?', [username], (err, user) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (err || !result) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      req.session.user = { username };
+      res.json({ message: 'Login successful', user: { username } });
+    });
+  });
 });
 
 // Logout endpoint
@@ -66,16 +120,24 @@ app.get('/api/auth/user', (req, res) => {
 
 // Booking endpoint
 app.post('/api/bookings', (req, res) => {
-  const booking = req.body;
-  bookings.push(booking);
-  res.json({ message: 'Booking received', booking });
+  const { checkin, checkout, adults, children } = req.body;
+  db.run('INSERT INTO bookings (checkin, checkout, adults, children) VALUES (?, ?, ?, ?)', [checkin, checkout, adults, children], function(err) {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Booking received', bookingId: this.lastID });
+  });
 });
 
 // Contact endpoint
 app.post('/api/contact', (req, res) => {
-  const contact = req.body;
-  contacts.push(contact);
-  res.json({ message: 'Contact message received', contact });
+  const { name, email, message } = req.body;
+  db.run('INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)', [name, email, message], function(err) {
+    if (err) {
+      return res.status(500).json({ message: 'Database error' });
+    }
+    res.json({ message: 'Contact message received', contactId: this.lastID });
+  });
 });
 
 app.listen(PORT, () => {
