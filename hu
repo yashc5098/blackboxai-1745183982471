@@ -1,0 +1,8 @@
+<li data-cy="account" class="makeFlex hrtlCenter font10 makeRelative lhUser userLoggedOut">
+          <div class=""><span class="userNameIcon whiteText makeFlex perfectCenter latoBlack appendRight10"><span
+                                        data-cy="myIconWhite" class="landingSprite myIconWhite">
+                                        <!-- -->&nbsp;</span></span></div>
+          <div class="makeFlex column flexOne whiteText latoBold">
+                    <p data-cy="LoginHeaderText"> <!-- -->Login or Create Account</p>
+          </div>
+</li>
